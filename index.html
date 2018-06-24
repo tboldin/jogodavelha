@@ -10,15 +10,13 @@
 
 <body>
 <script language="javascript">
-		
-	 var
-    	vencedor,
-    	pontosJogador,
-   	 pontosMaquina;
-	
-		step = 0;
 
-		diff=3;
+	var
+		step = 0,
+		diff=3,
+		jog;
+		maq;
+
 
         function clear_all(form) {
 
@@ -48,10 +46,11 @@
 
         if (eval_pos(field.form)) {
 
-			field.form.output.value="Você venceu!!";
-			setPontosJogador(getPontosJogador() + 1);
+			field.form.output.value="Você venceu!!"; 
 
 			step = -1;
+			
+			jog = jog + 1;
 
 			return;
 
@@ -64,7 +63,6 @@
 		if (position=="") {
 
 			field.form.output.value="Não houve vencedor."; 
-			maq(maq() + 1);
 
 			step = -1;
 
@@ -79,6 +77,8 @@
 			field.form.output.value="Você perdeu!";
 
 			step = -1;
+			
+			maq= maq + 1;
 
 		}
 
@@ -125,10 +125,6 @@
            return false;
 
         }
-	
-	 var getPontosJogador = function() {
-    		return pontosJogador;
-  		};
 
 
 
@@ -243,34 +239,23 @@
 			alert("Clique no botão");
 
         }
-	
-var getPontosMaquina = function() {
-    return pontosMaquina;
-  };
+		
+		function jog() {
+			var pjog = document.getElementById('jog').value;
+				document.getElementById('jog').value = jog;
+				field.form.output.value="jog"; 
+			}
 
-  var setPontosMaquina = function(pontos) {
-    pontosMaquina = pontos;
-  };
+			function maq() {
+				var pmaq = document.getElementById('maq').value;
+				document.getElementById('maq').value = maq;
+				field.form.output.value="maq"; 
+				}
 
-  var getPontosJogador = function() {
-    return pontosJogador;
-  };
-
-  var setPontosJogador = function(pontos) {
-    pontosJogador = pontos;
-  };
-	
-	return {
-    setPontosMaquina: setPontosMaquina,
-    setPontosJogador: setPontosJogador,
-    getPontosMaquina: getPontosMaquina,
-    getPontosJogador: getPontosJogador
-  };
-
-	
-
+				
       </script>
 
+	
 <br />
 <br />
 <form>
@@ -281,14 +266,25 @@ var getPontosMaquina = function() {
   <br>
   <font size="3" face="Comic Sans MS, arial">Mensagem: <input type="text" size="20" name="output"><br>
    </font></p>
-	<input type="text" id="maq" class="placar" readonly="readonly" value="0" />
-   	 VS
-    	<input type="text" id="jog" class="placar" readonly="readonly" value="0" />
- </center></div><div align="center"><center>
+  </center>
+  <center><div id="jog">
+    <label for="placar-jogador" id="label-jogador">Jogador</label>
+    <input type="text" id="jog" class="" readonly="readonly" value="0" />
+    VS
+    <input type="text" id="maq" class="" readonly="readonly" value="0" />
+    <label for="placar-Maquina">Máquina</label>
+	
+	</div></center>
+  
+   
+  
+  </div><div align="center"><center>
   </center></div><div align="center"><center><p><font size="3" face="Comic Sans MS, arial"><input type="reset" value="Reiniciar" onclick="clear_all(this.form)"> </font></p>
   </center></div>
 </form>
-
 <p align="center">&nbsp;</p>
+
+
+		  
 </body>
 </html>
