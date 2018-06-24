@@ -11,8 +11,10 @@
 <body>
 <script language="javascript">
 		
-		jog = 0;
-		maq = 0;
+	 var
+    	vencedor,
+    	pontosJogador,
+   	 pontosMaquina;
 	
 		step = 0;
 
@@ -47,7 +49,7 @@
         if (eval_pos(field.form)) {
 
 			field.form.output.value="Você venceu!!";
-			jog(jog() + 1);
+			setPontosJogador(getPontosJogador() + 1);
 
 			step = -1;
 
@@ -123,6 +125,10 @@
            return false;
 
         }
+	
+	 var getPontosJogador = function() {
+    		return pontosJogador;
+  		};
 
 
 
@@ -238,6 +244,29 @@
 
         }
 	
+var getPontosMaquina = function() {
+    return pontosMaquina;
+  };
+
+  var setPontosMaquina = function(pontos) {
+    pontosMaquina = pontos;
+  };
+
+  var getPontosJogador = function() {
+    return pontosJogador;
+  };
+
+  var setPontosJogador = function(pontos) {
+    pontosJogador = pontos;
+  };
+	
+	return {
+    setPontosMaquina: setPontosMaquina,
+    setPontosJogador: setPontosJogador,
+    getPontosMaquina: getPontosMaquina,
+    getPontosJogador: getPontosJogador
+  };
+
 	
 
       </script>
