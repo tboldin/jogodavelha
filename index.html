@@ -10,7 +10,10 @@
 
 <body>
 <script language="javascript">
-
+		
+		jog = 0;
+		maq = 0;
+	
 		step = 0;
 
 		diff=3;
@@ -43,7 +46,8 @@
 
         if (eval_pos(field.form)) {
 
-			field.form.output.value="Você venceu!!"; 
+			field.form.output.value="Você venceu!!";
+			jog(jog() + 1);
 
 			step = -1;
 
@@ -58,6 +62,7 @@
 		if (position=="") {
 
 			field.form.output.value="Não houve vencedor."; 
+			maq(maq() + 1);
 
 			step = -1;
 
@@ -232,7 +237,8 @@
 			alert("Clique no botão");
 
         }
-
+	
+	
 
       </script>
 
@@ -246,7 +252,10 @@
   <br>
   <font size="3" face="Comic Sans MS, arial">Mensagem: <input type="text" size="20" name="output"><br>
    </font></p>
-  </center></div><div align="center"><center>
+	<input type="text" id="maq" class="placar" readonly="readonly" value="0" />
+   	 VS
+    	<input type="text" id="jog" class="placar" readonly="readonly" value="0" />
+ </center></div><div align="center"><center>
   </center></div><div align="center"><center><p><font size="3" face="Comic Sans MS, arial"><input type="reset" value="Reiniciar" onclick="clear_all(this.form)"> </font></p>
   </center></div>
 </form>
